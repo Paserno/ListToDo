@@ -1,6 +1,10 @@
+import { Todo } from "../classes";
+
+import { todoList } from "../index";
 
 // * Referencia en el HTMÑ
 const divTodoList = document.querySelector('.todo-list');
+const txtInput    = document.querySelector('.new-todo');
 
 
 export const crearTodoHtml = (todo) => {
@@ -24,3 +28,41 @@ export const crearTodoHtml = (todo) => {
 }
 
 
+
+// Eventos
+txtInput.addEventListener('keyup', (event) =>{
+
+    if (event.keyCode === 13 && txtInput.value.length > 1) {
+        
+        console.log(txtInput.value)
+        const nuevoTodo = new Todo( txtInput.value);
+        todoList.nuevoTodo(nuevoTodo);
+
+        console.log(todoList);
+        crearTodoHtml(nuevoTodo);
+        txtInput.value= '';
+    }
+
+});
+
+
+divTodoList.addEventListener('click', (event) =>{
+
+    const nombreElemento = (event.target.localName); // input, label, button
+    const todoElemento   = event.target.parentElement.parentElement;
+    const todoID         = todoElemento.getAttribute('data-id')
+    
+
+    if (nombreElemento.includes('input')) {
+        todoList.marcarCompletado(todoID);
+        todoElemento.classList.toggle('completed');
+        // ! Referencia a todas las clases .classList 
+        // ! Para agregar o cambiar una clase .classList.toggle()
+    } else if ( nombreElemento.includes('button')){
+        todoList.eliminarTodo(todoID);
+        divTodoList.removeChild(todoElemento);
+    }
+
+
+
+})
