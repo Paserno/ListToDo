@@ -13,6 +13,7 @@ export class TodoList {
     eliminarTodo(id) {
 
       this.todos = this.todos.filter(todo => todo.id != id)
+      // ! https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
     }
 
@@ -26,10 +27,11 @@ export class TodoList {
                 break;
             }
         }
-
     }
 
     eliminarCompletados() {
+
+      this.todos = this.todos.filter(todo => !todo.completado )
 
     }
 
