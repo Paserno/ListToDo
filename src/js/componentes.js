@@ -32,7 +32,7 @@ export const crearTodoHtml = (todo) => {
 
 // Eventos
 txtInput.addEventListener('keyup', (event) => {
-
+    // * event.keyCode Corresponde a la tecla Enter
     if (event.keyCode === 13 && txtInput.value.length > 1) {
 
         console.log(txtInput.value)

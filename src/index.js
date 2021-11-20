@@ -9,20 +9,15 @@ export const todoList = new TodoList();
 // todoList.nuevoTodo(tarea);
 // const tarea1 = new Todo('Aprender Node.js');
 //  todoList.nuevoTodo(tarea1);
-// console.log(todoList);
-// crearTodoHtml(tarea);
 
+todoList.todos.forEach(crearTodoHtml);
+//* todoList.todos.forEach( todo => crearTodoHtml(todo)); Es lo mismo
+// ! ya que mientras se mande el mismo argumento y se recibe el mismo, no es necesario la "funcion flecha"
 
+const newTodo = new Todo('Aprender Ingles');
+// // todoList.nuevoTodo(newTodo);
+// // todoList.todos[0].imprimirClase();
+newTodo.imprimirClase();
 
-
-
-
-
-
-// localStorage.setItem('mi-key', 'ABC1234');
-// sessionStorage.setItem('mi-key', '1234ABC');
-
-// setTimeout(()=>{
-
-//     localStorage.removeItem('mi-key');
-// }, 3500);
+console.log('todos', todoList.todos);
+ 
